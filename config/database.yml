@@ -33,7 +33,7 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: Messenger
+  #username: turbochat_deploy_video
 
   # The password associated with the postgres role (username).
   #password:
@@ -64,6 +64,7 @@ test:
   database: <%= Rails.application.credentials.DB_NAME.test_db %>
   username: <%= Rails.application.credentials.DB_USERNAME.test_db %>
   password: <%= Rails.application.credentials.DB_PASSWORD.test_db %>
+
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
