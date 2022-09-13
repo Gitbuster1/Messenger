@@ -25,9 +25,9 @@ default: &default
 
 development:
   <<: *default
-  database: turbo_dev
-  username: turbo_dev
-  password: 123456
+  database: <%= ENV['DEV_DB'] %>
+  username: <%= ENV['DEV_DB'] %>
+  password: <%= ENV['PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,9 +61,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: turbo_test
-  username: turbo_test
-  password: 123456
+  database: <%= ENV['TEST_DB'] %>
+  username: <%= ENV['TEST_DB'] %>
+  password: <%= ENV['PASSWORD'] %>
 
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -88,6 +88,6 @@ test:
 #
 production:
   <<: *default
-  database: turbo_prod
-  username: turbo_prod
-  password: 123456
+  database: <%= ENV['PROD_DB'] %>
+  username: <%= ENV['PROD_DB'] %>
+  password: <%= ENV['PASSWORD'] %>
