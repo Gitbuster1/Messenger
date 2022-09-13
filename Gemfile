@@ -84,4 +84,4 @@ gem 'redis-namespace'
 gem 'redis-rails'
 
 gem 'pagy', '~> 5.10'
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3'
