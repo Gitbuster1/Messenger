@@ -20,7 +20,7 @@ class Room < ApplicationRecord
   end
 
   def participant?(room, user)
-    room.participants.where(user: user).exists?
+    room.participants.where(user:).exists?
   end
 
   def latest_message
@@ -32,15 +32,26 @@ class Room < ApplicationRecord
 
     return unless last_message
 
-    target = "room_#{id}_last_message"
+    room_target = "room_#{id}_last_message"
+    user_target = "room_#{id}_user_last_message"
+    sender = Current.user.eql?(last_message.user) ? Current.user : last_message.user
 
     broadcast_update_to('rooms',
-                        target: target,
+                        target: room_target,
                         partial: 'rooms/last_message',
                         locals: {
                           room: self,
                           user: last_message.user,
-                          last_message: last_message
+                          last_message:
+                        })
+    broadcast_update_to('rooms',
+                        target: user_target,
+                        partial: 'users/last_message',
+                        locals: {
+                          room: self,
+                          user: last_message.user,
+                          last_message:,
+                          sender:
                         })
   end
 end

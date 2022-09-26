@@ -88,7 +88,7 @@
     background: #555;
 }
 
-.last-message {
+.last-message, .last-message-time {
     font-size: 14px;
     color: #aaa;
     margin-top: 5px;

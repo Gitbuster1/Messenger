@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @joined_rooms = current_user.joined_rooms.order(last_message_at: :desc)
     @rooms = search_rooms
+    current_user.update(current_room: nil)
 
     @users = User.all_except(current_user)
     render 'index'
@@ -15,6 +16,7 @@ class RoomsController < ApplicationController
 
   def show
     @current_room = Room.find(params[:id])
+    current_user.update(current_room: @current_room)
 
     @room = Room.new
     @rooms = search_rooms
@@ -51,7 +53,7 @@ class RoomsController < ApplicationController
   def join
     @room = Room.find(params[:id])
     current_user.joined_rooms << @room
-    redirect_to @room
+    redirect_to @room, allow_other_host: true
   end
 
   def leave
