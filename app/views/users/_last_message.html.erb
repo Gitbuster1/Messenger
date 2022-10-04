@@ -4,7 +4,7 @@
       <% if last_message.attachments.attached? %>
         <em class="last-message"><%= "#{last_message.user.email} sent an attachment".truncate(40) %></em>
       <% else %>
-        <em class="last-message"><%= "#{last_message.body}".truncate(40) %></em>
+        <em class="last-message"><%= "#{last_message.user.email}: #{last_message.body}".truncate(40) %></em>
       <% end %>
       <%= content_tag(:em, class: "last-message-time", data: {time: last_message.created_at.to_i}) do %>
         <em class="last-message"><%= "#{time_ago_in_words(last_message.created_at)} ago"%></em>
