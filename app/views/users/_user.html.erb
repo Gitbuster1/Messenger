@@ -8,14 +8,14 @@
     <div class="row">
       <div class="col-12 d-flex align-items-center justify-content-between">
         <div class="icon-container">
-          <%= link_to image_tag(user.chat_avatar, class: 'chat_pfp'), user %>
+          <%= link_to image_tag(user.chat_avatar, class: 'chat_pfp'), user, data: { turbo: false } %>
           <%= turbo_stream_from "user_status" %>
           <div>
             <%= render "users/status", user: user %>
           </div>
         </div>
 
-        <%= link_to user.email, user, class: 'ms-2 me-auto username', data: { turbo: "false" } %>
+        <%= link_to user.email, user, class: 'ms-2 me-auto username', data: { turbo: false } %>
       </div>
     </div>
     <%= turbo_frame_tag [dom_id(room), "user_last_message"] do %>

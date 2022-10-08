@@ -85,3 +85,5 @@ gem 'redis-rails'
 
 gem 'pagy', '~> 5.10'
 gem 'aws-sdk-s3'
+
+gem "simple_form", "~> 5.1"

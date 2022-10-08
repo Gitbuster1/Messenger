@@ -14,12 +14,12 @@
         <%= current_user.email %>
       </div>
     </li>
-    <h4> Users </h4>
+    <h4 class="mt-3"> Users </h4>
     <%= turbo_stream_from "users" %>
     <div id="users" data-controller="user-list">
       <%= render "users/users", user: @users %>
     </div>
-    <h4> Rooms </h4>
+    <h4 class="mt-3"> Rooms </h4>
     <%= turbo_stream_from "rooms" %>
     <%= render 'layouts/new_room_form' %>
     <%= render 'rooms/search_form' %>
@@ -27,9 +27,9 @@
       <%= render "rooms/rooms", rooms: @joined_rooms, user: current_user %>
     </div>
   </div>
-  <div id="room_container" class="col-md-8 col-sm-8 bg-dark text-light">
+  <div id="room_container" class="col-md-8 col-sm-8 text-light">
     <% if @current_room %>
-      <div id="current_room">
+      <div id="current_room" class="mt-1">
         <h4 class="text-center"> <%= @user&.email || @current_room.name %> </h4>
         <%= turbo_stream_from @current_room %>
         <div id="messages" data-controller="scroll">

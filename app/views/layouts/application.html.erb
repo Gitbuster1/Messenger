@@ -27,6 +27,7 @@
 
   <body>
     <%= render "layouts/navbar" %>
+    <%= render "layouts/alerts" if @should_render_alerts %>
     <%= yield %>
   </body>
 </html>
