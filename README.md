@@ -1,5 +1,5 @@
 # Messenger
-This is a real-time chatting application built with Ruby on Rails. 
+A real-time chatting application built with Ruby on Rails. 
 
 ## Features
 - Chat with other users
